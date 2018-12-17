@@ -1,6 +1,6 @@
 package com.chimm.cms.domain.user.response;
 
-import com.chimm.cms.domain.response.ResultCode;
+import com.chimm.cms.base.response.ResultCode;
 import io.swagger.annotations.ApiModel;
 import lombok.ToString;
 

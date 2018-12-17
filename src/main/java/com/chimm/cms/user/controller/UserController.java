@@ -2,7 +2,7 @@ package com.chimm.cms.user.controller;
 
 import com.chimm.cms.base.controller.BaseController;
 import com.chimm.cms.base.utils.CookieUtil;
-import com.chimm.cms.domain.response.CommonCode;
+import com.chimm.cms.base.response.CommonCode;
 import com.chimm.cms.domain.user.User;
 import com.chimm.cms.domain.user.response.UserCode;
 import com.chimm.cms.domain.user.response.UserResult;

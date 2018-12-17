@@ -1,9 +1,7 @@
 package com.chimm.cms.user.service;
 
-import com.chimm.cms.domain.response.CommonCode;
 import com.chimm.cms.user.dao.UserDao;
 import com.chimm.cms.domain.user.User;
-import com.chimm.cms.domain.user.response.UserResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
