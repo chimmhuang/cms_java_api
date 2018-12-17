@@ -12,7 +12,7 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://111.231.202.143:3306/cms
     hikari: # springboot 2.0 整合了hikari ,据说这是目前性能最好的java数据库连接池
-      username: chimmtencenos
+      username: chimmtencentos
       password: Chimm@1008611
   jpa:
     hibernate:
