@@ -59,7 +59,9 @@ public class UserController extends BaseController {
         if (user1 != null) {
             //设置cookie和session
             request.getSession().setAttribute(user1.getUsername(),user1);
-            CookieUtil.setCookie(request,response,"CMS_TOKEN",user1.getUsername());
+            //CookieUtil.setCookie(request,response,"CMS_TOKEN",user1.getUsername());
+            Cookie cookie = new Cookie("CMS_TOKEN",user1.getUsername());
+            response.addCookie(cookie);
             return new UserResult(CommonCode.SUCCESS, user1);
         } else {
             return new UserResult(UserCode.USER_LOGIN_FAIL, null);
