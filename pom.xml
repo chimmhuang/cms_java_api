@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.chimm.cms</groupId>
     <artifactId>cms</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.2-SNAPSHOT</version>
     <name>cms</name>
     <description>cms</description>
 
@@ -76,6 +76,13 @@
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger-ui</artifactId>
             <version>${springfox-swagger.version}</version>
+        </dependency>
+
+        <!-- 通用工具类 -->
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>2.6</version>
         </dependency>
     </dependencies>
 

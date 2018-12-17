@@ -1,4 +1,4 @@
-package com.chimm.cms.core.response;
+package com.chimm.cms.domain.response;
 
 /**
  * @author Created by huangs on 2018/12/15 0015.

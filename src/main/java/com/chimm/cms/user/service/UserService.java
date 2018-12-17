@@ -1,6 +1,6 @@
 package com.chimm.cms.user.service;
 
-import com.chimm.cms.core.response.CommonCode;
+import com.chimm.cms.domain.response.CommonCode;
 import com.chimm.cms.user.dao.UserDao;
 import com.chimm.cms.domain.user.User;
 import com.chimm.cms.domain.user.response.UserResult;
@@ -23,12 +23,18 @@ public class UserService {
      * @param user
      * @return
      */
-    public UserResult login(User user) {
-        User user1 = userDao.findByUsernameAndPassword(user.getUsername(), user.getPassword());
-        if (user1 != null) {
-            return new UserResult(CommonCode.SUCCESS,user1);
-        }
-        return new UserResult(CommonCode.FAIL, null);
+    public User login(User user) {
+//        User user1 = userDao.findByUsernameAndPassword(user.getUsername(), user.getPassword());
+//        if (user1 != null) {
+//            return new UserResult(CommonCode.SUCCESS,user1);
+//        }
+//        return new UserResult(CommonCode.FAIL, null);
+        return user;
+    }
+
+    //测试数据库
+    public User test(User user) {
+        return userDao.findByUsernameAndPassword(user.getUsername(), user.getPassword());
     }
 
 

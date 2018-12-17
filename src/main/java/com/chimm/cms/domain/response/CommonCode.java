@@ -1,4 +1,4 @@
-package com.chimm.cms.core.response;
+package com.chimm.cms.domain.response;
 
 import lombok.ToString;
 

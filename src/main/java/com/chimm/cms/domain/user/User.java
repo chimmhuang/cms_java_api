@@ -16,7 +16,7 @@ import java.io.Serializable;
 @ToString
 @Entity
 @Table(name = "users")
-@ApiModel(value = "user对象",description = "用户对象user")
+@ApiModel(value = "user实体类")
 public class User implements Serializable {
 
     @ApiModelProperty(hidden = true)
