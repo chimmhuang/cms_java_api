@@ -16,15 +16,15 @@ import lombok.ToString;
 public class ResponseResult implements Response {
 
     //操作是否成功
-    @ApiModelProperty(name = "操作是否成功")
+    @ApiModelProperty(name = "success",value = "操作是否成功",example = "true")
     boolean success = SUCCESS;
 
     //操作代码
-    @ApiModelProperty(name = "操作代码")
+    @ApiModelProperty(name = "code",value = "操作代码",example = "10000")
     int code = SUCCESS_CODE;
 
     //提示信息
-    @ApiModelProperty(name = "提示信息")
+    @ApiModelProperty(name = "message",value = "提示信息",example = "操作成功！")
     String message;
 
     public ResponseResult(ResultCode resultCode){

@@ -7,15 +7,14 @@ import com.chimm.cms.domain.user.User;
 import com.chimm.cms.domain.user.response.UserCode;
 import com.chimm.cms.domain.user.response.UserResult;
 import com.chimm.cms.user.service.UserService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
+import io.swagger.annotations.*;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import springfox.documentation.annotations.ApiIgnore;
 
 import javax.servlet.http.Cookie;
 
@@ -26,7 +25,7 @@ import javax.servlet.http.Cookie;
  */
 @RestController
 @RequestMapping("/user")
-@Api(value = "cms用户登录接口",description = "用户模块")
+@Api(tags = "用户模块相关接口")
 public class UserController extends BaseController {
 
     @Autowired
@@ -34,13 +33,19 @@ public class UserController extends BaseController {
 
     /**
      * 登陆
-     * @param user
+     * @param user 用户实体类
      * @return
      */
+    @ApiOperation(value = "用户登录",notes = "该接口会往浏览器写入Cookie（登录TOKEN），有效期为10天")
+    @ApiResponses({
+            @ApiResponse(code = 10000,message = "登录成功！"),
+            @ApiResponse(code = 11111,message = "如果传入参数都为空，则操作失败！"),
+            @ApiResponse(code = 21002,message = "用户名为空！"),
+            @ApiResponse(code = 21003,message = "密码为空！"),
+            @ApiResponse(code = 21004,message = "用户名或密码错误！")
+    })
     @PostMapping("/login")
-    @ApiOperation(value = "用户登录")
-    @ApiParam(name = "用户对象",value = "传入json格式",required = true)
-    public UserResult login(@RequestBody User user) {
+    public UserResult login(@RequestBody @ApiParam(name = "user",value = "不需要uid",required = true) User user) {
 
         //接受参数校验
         if (user == null) {
@@ -74,8 +79,12 @@ public class UserController extends BaseController {
      * @return
      */
     @PostMapping("/autoLogin")
-    @ApiOperation(value = "获取cookie自动登录",notes = "通过前台传入的cookie进行登录")
-    @ApiParam(name = "用户对象",value = "传入json格式",required = true)
+    @ApiOperation(value = "获取cookie自动登录",notes = "该接口会获取前台传入的Cookie（登录TOKEN）进行登录")
+    @ApiResponses({
+            @ApiResponse(code = 10000,message = "登录成功！"),
+            @ApiResponse(code = 21001,message = "Cookie中没有用户信息！"),
+            @ApiResponse(code = 21005,message = "session中没有用户信息！"),
+    })
     public UserResult autoLogin() {
         String cmsToken = CookieUtil.getCookieValue(request, "CMS_TOKEN", "utf-8");
 

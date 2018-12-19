@@ -19,17 +19,17 @@ import java.io.Serializable;
 @ApiModel(value = "user实体类")
 public class User implements Serializable {
 
-    @ApiModelProperty(hidden = true)
+    @ApiModelProperty(value = "用户主键id",name = "uid",example = "SGWSE54321DGHJ54")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "uid")
     private String uid; //用户表主键
 
-    @ApiModelProperty(value = "用户名",name = "username",required = true)
+    @ApiModelProperty(value = "用户名",name = "username",example = "zhangsan")
     @Column(name = "username")
     private String username; //用户名
 
-    @ApiModelProperty(value = "密码",name = "password",required = true)
+    @ApiModelProperty(value = "账号密码",name = "password",example = "123456")
     @Column(name = "password")
     private String password; //密码
 
