@@ -67,6 +67,7 @@ public class UserController extends BaseController {
             //CookieUtil.setCookie(request,response,"CMS_TOKEN",user1.getUsername());
             Cookie cookie = new Cookie("CMS_TOKEN",user1.getUsername());
             response.addCookie(cookie);
+            response.addHeader("x-auth-token",user1.getUsername());
             return new UserResult(CommonCode.SUCCESS, user1);
         } else {
             return new UserResult(UserCode.USER_LOGIN_FAIL, null);
