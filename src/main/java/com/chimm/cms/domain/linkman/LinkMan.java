@@ -1,10 +1,10 @@
 package com.chimm.cms.domain.linkman;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.ToString;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -42,8 +42,8 @@ public class LinkMan {
     private String phone; //联系人11位手机号
 
     @ApiModelProperty(name = "birthday",value = "联系人生日",example = "2018-05-06")
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(name = "birthday")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date birthday; //联系人生日
 
 }
