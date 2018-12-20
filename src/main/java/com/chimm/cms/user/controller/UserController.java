@@ -44,7 +44,7 @@ public class UserController extends BaseController {
             @ApiResponse(code = 21004,message = "用户名或密码错误！")
     })
     @PostMapping("/login")
-    public UserResult login(@RequestBody @ApiParam(name = "user",value = "不需要uid",required = true) User user,String page,String pageSize) {
+    public UserResult login(@RequestBody @ApiParam(name = "user",value = "不需要uid",required = true) User user) {
 
         //接受参数校验
         if (user == null) {
