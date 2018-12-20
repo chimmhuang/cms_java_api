@@ -2,7 +2,7 @@ package com.chimm.cms.user.controller;
 
 import com.chimm.cms.base.controller.BaseController;
 import com.chimm.cms.base.utils.CookieUtil;
-import com.chimm.cms.base.response.CommonCode;
+import com.chimm.cms.base.domain.response.CommonCode;
 import com.chimm.cms.domain.user.User;
 import com.chimm.cms.domain.user.response.UserCode;
 import com.chimm.cms.domain.user.response.UserResult;
@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import springfox.documentation.annotations.ApiIgnore;
 
 import javax.servlet.http.Cookie;
 
@@ -45,7 +44,7 @@ public class UserController extends BaseController {
             @ApiResponse(code = 21004,message = "用户名或密码错误！")
     })
     @PostMapping("/login")
-    public UserResult login(@RequestBody @ApiParam(name = "user",value = "不需要uid",required = true) User user) {
+    public UserResult login(@RequestBody @ApiParam(name = "user",value = "不需要uid",required = true) User user,String page,String pageSize) {
 
         //接受参数校验
         if (user == null) {

@@ -1,7 +1,7 @@
 package com.chimm.cms.domain.user.response;
 
-import com.chimm.cms.base.response.ResponseResult;
-import com.chimm.cms.base.response.ResultCode;
+import com.chimm.cms.base.domain.response.ResponseResult;
+import com.chimm.cms.base.domain.response.ResultCode;
 import com.chimm.cms.domain.user.User;
 import io.swagger.annotations.ApiModel;
 import lombok.Data;

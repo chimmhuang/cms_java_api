@@ -1,4 +1,4 @@
-package com.chimm.cms.base.response;
+package com.chimm.cms.base.domain.response;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;

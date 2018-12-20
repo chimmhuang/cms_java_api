@@ -2,7 +2,6 @@ package com.chimm.cms.domain.user;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import io.swagger.annotations.ApiParam;
 import lombok.Data;
 import lombok.ToString;
 
@@ -11,6 +10,8 @@ import java.io.Serializable;
 
 /**
  * @author Created by chimm on 2018/12/14 0014.
+ *
+ * 用户实体类
  */
 @Data
 @ToString
@@ -21,7 +22,6 @@ public class User implements Serializable {
 
     @ApiModelProperty(value = "用户主键id",name = "uid",example = "SGWSE54321DGHJ54")
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "uid")
     private String uid; //用户表主键
 
