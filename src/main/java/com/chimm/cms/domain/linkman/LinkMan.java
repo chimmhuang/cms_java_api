@@ -24,7 +24,7 @@ import java.util.Date;
 @ApiModel("联系人实体类")
 public class LinkMan {
 
-    @ApiModelProperty(name = "lid",value = "联系人主键",example = "SGWSE54321DGHJ54")
+    @ApiModelProperty(name = "lid",value = "联系人主键",example = "1a3e6dc8225045ab9f0bf4ae56e98bde")
     @Id
     @Column(name = "lid")
     private String lid; //联系人主键

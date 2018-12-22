@@ -2,15 +2,11 @@ package com.chimm.cms.linkman.controller;
 
 import com.chimm.cms.domain.PageResult;
 import com.chimm.cms.domain.linkman.LinkMan;
+import com.chimm.cms.domain.linkman.response.LinkmanResult;
 import com.chimm.cms.linkman.service.LinkManService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiImplicitParams;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author Created by huangs on 2018/12/20 0020.
@@ -46,4 +42,30 @@ public class LinkManController {
         }
         return linkManService.findAllByPage(page, size);
     }
+
+
+    /**
+     * 保存/修改 联系人
+     * @param linkMan 联系人实体类
+     * @return LinkmanResult
+     */
+    @ApiOperation(value = "保存/修改 联系人",notes = "保存和修改都是一个接口，保存不用传入lid字段，修改必须传入lid字段")
+    @PostMapping("/save")
+    public LinkmanResult save(@RequestBody @ApiParam(name = "linkMan",value = "新增不需要lid",required = true) LinkMan linkMan) {
+        return linkManService.saveLinkman(linkMan);
+    }
+
+    /**
+     * 根据id查询联系人信息
+     * @param lid 联系人id
+     * @return LinkMan/null
+     */
+    @ApiOperation(value = "根据id查询指定联系人信息",notes = "联系人的id是放在请求路径/{path}中")
+    @ApiImplicitParam(name = "lid",value = "指定联系人id",paramType = "path",example = "1a3e6dc8225045ab9f0bf4ae56e98bde")
+    @GetMapping("/{lid}")
+    public LinkMan findById(@PathVariable("lid") String lid) {
+        return linkManService.findById(lid);
+    }
+
+
 }

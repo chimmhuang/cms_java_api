@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.chimm.cms</groupId>
     <artifactId>cms</artifactId>
-    <version>0.0.4-SNAPSHOT</version>
+    <version>0.0.5-SNAPSHOT</version>
     <name>cms</name>
     <description>cms</description>
 
