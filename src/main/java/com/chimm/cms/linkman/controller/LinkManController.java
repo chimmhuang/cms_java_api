@@ -1,5 +1,6 @@
 package com.chimm.cms.linkman.controller;
 
+import com.chimm.cms.base.domain.response.ResponseResult;
 import com.chimm.cms.domain.PageResult;
 import com.chimm.cms.domain.linkman.LinkMan;
 import com.chimm.cms.domain.linkman.response.LinkmanResult;
@@ -65,6 +66,23 @@ public class LinkManController {
     @GetMapping("/{lid}")
     public LinkMan findById(@PathVariable("lid") String lid) {
         return linkManService.findById(lid);
+    }
+
+
+    /**
+     * 通过id删除对应的联系人信息
+     * @param lid 联系人id
+     * @return ResponseResult
+     */
+    @ApiOperation(value = "通过id删除对应的联系人信息",notes = "联系人的id是放在请求路径/{path}中")
+    @ApiImplicitParam(name = "lid",value = "指定联系人id",paramType = "path",example = "1a3e6dc8225045ab9f0bf4ae56e98bde")
+    @ApiResponses({
+            @ApiResponse(code = 10000,message = "删除成功！"),
+            @ApiResponse(code = 11111,message = "删除失败！")
+    })
+    @DeleteMapping("/{lid}")
+    public ResponseResult delById(@PathVariable("lid") String lid) {
+        return linkManService.delById(lid);
     }
 
 

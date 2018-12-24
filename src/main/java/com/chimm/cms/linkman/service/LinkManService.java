@@ -72,4 +72,18 @@ public class LinkManService {
 
         return null;
     }
+
+    /**
+     * 通过id删除对应的联系人信息
+     * @param lid 联系人id
+     * @return ResponseResult
+     */
+    public ResponseResult delById(String lid) {
+        Optional<LinkMan> optional = linkManDao.findById(lid);
+        if (optional.isPresent()) {
+            linkManDao.deleteById(lid);
+            return new ResponseResult(CommonCode.SUCCESS);
+        }
+        return new ResponseResult(CommonCode.FAIL);
+    }
 }
