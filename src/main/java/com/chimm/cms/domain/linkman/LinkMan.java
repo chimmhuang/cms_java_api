@@ -46,4 +46,10 @@ public class LinkMan {
     @JsonFormat(pattern = "yyyy-MM-dd")
     private Date birthday; //联系人生日
 
+    @Column(name = "create_time")
+    private Date createTime; //创建时间
+
+    @Column(name = "update_time")
+    private Date updateTime; //更新时间
+
 }
