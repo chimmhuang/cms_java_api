@@ -4,6 +4,7 @@ import com.chimm.cms.base.domain.response.ResponseResult;
 import com.chimm.cms.domain.PageResult;
 import com.chimm.cms.domain.linkman.LinkMan;
 import com.chimm.cms.domain.linkman.response.LinkmanResult;
+import com.chimm.cms.domain.linkman.vo.LinkManVo;
 import com.chimm.cms.linkman.service.LinkManService;
 import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +35,7 @@ public class LinkManController {
             @ApiImplicitParam(name = "size",value = "一页显示数",paramType = "query",example = "10")
     })
     @GetMapping("/findAll")
-    public PageResult<LinkMan> findAllByPage(int page, int size) {
+    public PageResult<LinkManVo> findAllByPage(int page, int size) {
         if (page <= 0) {
             page = 1;
         }
@@ -64,7 +65,7 @@ public class LinkManController {
     @ApiOperation(value = "根据id查询指定联系人信息",notes = "联系人的id是放在请求路径/{path}中")
     @ApiImplicitParam(name = "lid",value = "指定联系人id",paramType = "path",example = "1a3e6dc8225045ab9f0bf4ae56e98bde")
     @GetMapping("/{lid}")
-    public LinkMan findById(@PathVariable("lid") String lid) {
+    public LinkManVo findById(@PathVariable("lid") String lid) {
         return linkManService.findById(lid);
     }
 

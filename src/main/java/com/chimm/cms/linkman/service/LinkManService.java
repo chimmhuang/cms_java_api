@@ -4,6 +4,7 @@ import com.chimm.cms.base.domain.response.ResponseResult;
 import com.chimm.cms.domain.PageResult;
 import com.chimm.cms.domain.linkman.LinkMan;
 import com.chimm.cms.domain.linkman.response.LinkmanResult;
+import com.chimm.cms.domain.linkman.vo.LinkManVo;
 import com.chimm.cms.linkman.dao.LinkManDao;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,9 +15,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import com.chimm.cms.base.domain.response.CommonCode;
 
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 /**
  * @author Created by huangs on 2018/12/20 0020.
@@ -35,14 +34,26 @@ public class LinkManService {
      * @param size 一页显示数
      * @return PageResult
      */
-    public PageResult<LinkMan> findAllByPage(int page, int size) {
+    public PageResult<LinkManVo> findAllByPage(int page, int size) {
+
+        List<LinkManVo> linkManVoList = new ArrayList<>();
+
         //分页查询 - 根据更新时间降序
         Sort sort = new Sort(Sort.Direction.DESC,"updateTime");
         Pageable pageable = new PageRequest(page-1,size,sort);
         Page<LinkMan> linkManPage = linkManDao.findAll(pageable);
 
+        //取出集合列表
+        List<LinkMan> linkManList = linkManPage.getContent();
+
+        //封装VO集合
+        linkManList.forEach(linkMan -> {
+            LinkManVo linkManVo = new LinkManVo(linkMan);
+            linkManVoList.add(linkManVo);
+        });
+
         //封装结果集并返回
-        PageResult<LinkMan> pageResult = new PageResult(linkManPage.getTotalElements(),page,linkManPage.getTotalPages(),linkManPage.getContent());
+        PageResult<LinkManVo> pageResult = new PageResult(linkManPage.getTotalElements(),page,linkManPage.getTotalPages(),linkManVoList);
         return pageResult;
     }
 
@@ -82,10 +93,10 @@ public class LinkManService {
      * @param lid 联系人id
      * @return LinkMan/null
      */
-    public LinkMan findById(String lid) {
+    public LinkManVo findById(String lid) {
         Optional<LinkMan> optional = linkManDao.findById(lid);
         if (optional.isPresent()) {
-            return optional.get();
+            return new LinkManVo(optional.get());
         }
 
         return null;
