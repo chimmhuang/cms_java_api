@@ -77,7 +77,6 @@ public class LinkManService {
             //更新
             Optional<LinkMan> optional = linkManDao.findById(linkMan.getLid());
             if (optional.isPresent()) {
-                linkMan = optional.get();
                 linkMan.setUpdateTime(new Date());
             }
         }
